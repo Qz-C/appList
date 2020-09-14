@@ -1,0 +1,87 @@
+#main-header{
+    box-shadow: 0 0 5px #999;
+    width: 100%;
+    height: 60px;
+    background: #da552f;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    /*Centering using flex-box*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px;
+    position: fixed;
+    top:0;
+    
+}
+
+#main-header .left{
+    display: flex;
+    align-items: center;
+}
+
+#main-header .left #title {
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#main-header .left svg{
+    cursor: pointer !important;
+}
+
+#main-header .left #search-input{
+    margin: 0px 5px 0px 10px;
+    padding: 5px;
+    border:none;
+    height: 30px;
+}
+
+#main-header a{
+    text-decoration: none;
+    color: #fff;
+    transition: all 300ms;
+}
+#main-header a:hover{
+    opacity: 0.7;
+}
+
+#search-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-box #box-preview{
+    display: flex;
+    flex-direction: column;
+}
+
+#search-box #box-preview #results-container .content-container{
+    box-shadow: 2px 2px 5px #999;
+    width: 180px;
+    margin-left: 10px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    max-width: 200px;
+    background-color: #f0efef;
+}
+
+#search-box #results-container .content-container a{
+    padding: 10px;
+    color: #666;
+    border-bottom: 2px solid #999;
+    transition: all 300ms;
+    display: inline-block;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+#search-box #results-container .content-container a:hover{
+    opacity: 1;
+    color: white;
+    background-color: #da552f;
+    
+}
