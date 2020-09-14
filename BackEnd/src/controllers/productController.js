@@ -1,7 +1,7 @@
 //It will handle the operations of an specific module
 
 const mongoose = require('mongoose');
-const product = mongoose.model('product');
+const app = mongoose.model('app');
 
 module.exports = {
     async index(req, res) {
@@ -9,35 +9,43 @@ module.exports = {
         
         const { page = 1 } = req.query; 
 
-        //show all the products page by page -- the first param on .paginate is used to filter
-        const products = await product.paginate({} , { page , limit: 10 } );
+        //show all the apps page by page -- the first param on .paginate is used to filter
+        const apps = await app.paginate({} , { page , limit: 10 } );
  
-        return res.json(products);
+        return res.json(apps);
     },
 
     async store(req, res){
-        const products = await product.create(req.body);
+        const apps = await app.create(req.body);
 
-        return res.json(products);
+        return res.json(apps);
     },
     async show(req, res){
-        const products = await product.findById(req.params.id);
+        const apps = await app.findById(req.params.id);
 
-        return res.json(products);
+        return res.json(apps);
     },
     async update(req, res){
-        //Search for a unique product (req.params.id) and update this product with the body's information (req.body)
-        //{new : true} return to products the new value
-        const products = await product.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        //Search for a unique app (req.params.id) and update this app with the body's information (req.body)
+        //{new : true} return to apps the new value
+        const apps = await app.findByIdAndUpdate(req.params.id, req.body, {new: true})
 
-        return res.json(products);
+        return res.json(apps);
     },
 
-    async destroy(req, res){
-        await product.findByIdAndRemove(req.params.id);
+    async delete(req, res){
+        await app.findByIdAndDelete(req.params.id);
 
         //return a success message without content
         return res.send();
     },
+    async search(req, res){
+
+        const title = req.params.title;
+
+        const apps = await app.find({title: { $regex: `${title}`}}).limit(10).exec();
+        
+        return res.json(apps);
+    }
 
 };

@@ -7,6 +7,7 @@ routes.get('/products' , productController.index);
 routes.get('/products/:id', productController.show);
 routes.post('/products', productController.store);
 routes.put('/products/:id', productController.update);
-routes.delete('/products/:id', productController.destroy);
+routes.delete('/products/:id', productController.delete);
+routes.get('/search/:title', productController.search);
 
 module.exports = routes;

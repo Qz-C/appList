@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
 
-const ProductSchema = new mongoose.Schema({
+const AppSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true, // It indicates that this field is mandatory
@@ -20,6 +20,6 @@ const ProductSchema = new mongoose.Schema({
     },
 });
 
-ProductSchema.plugin(mongoosePaginate);
+AppSchema.plugin(mongoosePaginate);
 
-mongoose.model('product', ProductSchema); // Basically the command to register a model in the application 
+mongoose.model('app', AppSchema); // Basically the command to register a model in the application 
